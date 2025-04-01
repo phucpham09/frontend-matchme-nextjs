@@ -3,6 +3,11 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { GiThreeFriends } from "react-icons/gi";
 import { IoMenu } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
+import { LuHandshake } from "react-icons/lu";
+import { CgProfile } from "react-icons/cg";
+import { MdOutlineMessage } from "react-icons/md";
+
 const TopNav = () => {
   const [isMenu, setIsMenu] = useState(false);
   return (
@@ -14,25 +19,25 @@ const TopNav = () => {
       />
       <div className="flex justify-center items-center max-sm:w-11/12">
         <GiThreeFriends size={"40px"} className="text-white" />
-        <h1 className="text-white text-2xl font-semibold place-self-end">
-          MatchMe
+        <h1 className="text-white text-2xl font-semibold place-self-end cursor-pointer">
+          <Link href={"/"}>MatchMe</Link>
         </h1>
       </div>
       <div className="sm:flex gap-x-10 justify-center items-center hidden">
         <Link
-          href={""}
+          href={"/match"}
           className="text-3xl font-semibold text-white cursor-pointer"
         >
           Match
         </Link>
         <Link
-          href={""}
+          href={"/profile"}
           className="text-3xl font-semibold text-white cursor-pointer"
         >
           Profile
         </Link>
         <Link
-          href={""}
+          href={"/chat"}
           className="text-3xl font-semibold text-white cursor-pointer"
         >
           Chat
@@ -40,53 +45,59 @@ const TopNav = () => {
       </div>
       <div className="sm:flex justify-center items-center gap-x-4 hidden">
         <Link
-          href={""}
+          href={"/login"}
           className="border-white border-2 text-white rounded-full px-4 py-1 text-2xl"
         >
           Login
         </Link>
         <Link
-          href={""}
+          href={"/register"}
           className="border-white border-2 text-white rounded-full px-4 py-1 text-2xl"
         >
           Register
         </Link>
       </div>
-      
+
       <div
-        className={`fixed top-0 left-0 w-2/3 h-full bg-white shadow-lg transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-2/3 bg-white shadow-lg transition-transform duration-300 ease-in-out ${
           isMenu ? "translate-x-0" : "-translate-x-full"
         } sm:hidden`}
       >
-        <button
-          className="absolute top-4 right-4 text-black text-3xl"
+        <IoClose
+          className="absolute top-4 right-4"
+          size={"40px"}
           onClick={() => setIsMenu(!isMenu)}
-        >
-          ✖
-        </button>
-        <nav className="flex flex-col mt-16 space-y-6 text-center text-black text-2xl font-semibold">
-          <Link href="" className="block">
-            Match
-          </Link>
-          <Link href="" className="block">
-            Profile
-          </Link>
-          <Link href="" className="block">
-            Chat
-          </Link>
-          <Link
-            href=""
-            className="border-black border-2 rounded-full px-4 py-2 mt-4"
-          >
-            Login
-          </Link>
-          <Link
-            href=""
-            className="border-black border-2 rounded-full px-4 py-2"
-          >
-            Register
-          </Link>
-        </nav>
+        />
+        <div className="mt-18 flex flex-col items-center gap-y-4">
+          <div className="flex justify-center items-center gap-x-1">
+            <LuHandshake size={"25px"} />
+            <Link href={"/match"} className="text-2xl ">
+              Match
+            </Link>
+          </div>
+          <div className="flex justify-center items-center gap-x-1">
+            <CgProfile size={"25px"} />
+            <Link href={"/profile"} className="text-2xl ">
+              Profile
+            </Link>
+          </div>
+          <div className="flex justify-center items-center gap-x-1">
+            <MdOutlineMessage size={"25px"} />
+            <Link href={"/chat"} className="text-2xl ">
+              Chat
+            </Link>
+          </div>
+          <div className="flex justify-center items-center border-2 py-2 px-12 rounded-full">
+            <Link href={"/login"} className="text-2xl ">
+              Login
+            </Link>
+          </div>
+          <div className="flex justify-center items-center border-2 py-2 px-8 rounded-full">
+            <Link href={"/register"} className="text-2xl ">
+              Register
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

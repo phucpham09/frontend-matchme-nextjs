@@ -20,27 +20,33 @@ const TopNav = () => {
       <div className="flex justify-center items-center max-sm:w-11/12">
         <GiThreeFriends size={"40px"} className="text-white" />
         <h1 className="text-white text-2xl font-semibold place-self-end cursor-pointer">
-          <Link href={"/"}>MatchMe</Link>
+          <Link href={"/dashboard"}>MatchMe</Link>
         </h1>
       </div>
       <div className="sm:flex gap-x-10 justify-center items-center hidden">
         <Link
-          href={"/match"}
+          href={"/dashboard"}
           className="text-3xl font-semibold text-white cursor-pointer"
         >
-          Match
+          Trang chủ
         </Link>
         <Link
-          href={"/profile"}
+          href={"/newsfeed"}
           className="text-3xl font-semibold text-white cursor-pointer"
         >
-          Profile
+          Bảng tin
         </Link>
         <Link
-          href={"/chat"}
+          href={"/event"}
           className="text-3xl font-semibold text-white cursor-pointer"
         >
-          Chat
+          Ghép đôi
+        </Link>
+        <Link
+          href={"/chats"}
+          className="text-3xl font-semibold text-white cursor-pointer"
+        >
+          Phòng chat
         </Link>
       </div>
       <div className="sm:flex justify-center items-center gap-x-4 hidden">

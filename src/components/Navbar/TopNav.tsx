@@ -37,6 +37,12 @@ const TopNav = () => {
           Bảng tin
         </Link>
         <Link
+          href={"/roomlist"}
+          className="text-3xl font-semibold text-white cursor-pointer"
+        >
+          Sự kiện
+        </Link>
+        <Link
           href={"/event"}
           className="text-3xl font-semibold text-white cursor-pointer"
         >

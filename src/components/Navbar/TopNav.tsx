@@ -148,7 +148,7 @@ const TopNav = () => {
           </div>
           <div className="flex justify-center items-center gap-x-1">
             {/* <MdOutlineMessage size={"25px"} /> */}
-            <Link href={"/chatss"} className="text-2xl ">
+            <Link href={"/chats"} className="text-2xl ">
               Phòng chat
             </Link>
           </div>

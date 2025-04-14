@@ -70,7 +70,7 @@ const TopNav = () => {
         </Link>
       </div>
 
-      <div
+      {/* <div
         className={`fixed top-0 left-0 h-full w-2/3 bg-white shadow-lg transition-transform duration-300 ease-in-out ${
           isMenu ? "translate-x-0" : "-translate-x-full"
         } sm:hidden`}
@@ -97,6 +97,59 @@ const TopNav = () => {
             <MdOutlineMessage size={"25px"} />
             <Link href={"/chat"} className="text-2xl ">
               Chat
+            </Link>
+          </div>
+          <div className="flex justify-center items-center border-2 py-2 px-12 rounded-full">
+            <Link href={"/login"} className="text-2xl ">
+              Login
+            </Link>
+          </div>
+          <div className="flex justify-center items-center border-2 py-2 px-8 rounded-full">
+            <Link href={"/register"} className="text-2xl ">
+              Register
+            </Link>
+          </div>
+        </div>
+      </div> */}
+      <div
+        className={`fixed top-0 z-50 left-0 h-full w-2/3 bg-white shadow-lg transition-transform duration-300 ease-in-out ${
+          isMenu ? "translate-x-0" : "-translate-x-full"
+        } sm:hidden`}
+      >
+        <IoClose
+          className="absolute top-4 right-4"
+          size={"40px"}
+          onClick={() => setIsMenu(!isMenu)}
+        />
+        <div className="mt-18 flex flex-col items-center gap-y-4">
+          <div className="flex justify-center items-center gap-x-1">
+            {/* <LuHandshake size={"25px"} /> */}
+            <Link href={"/dashboard"} className="text-2xl ">
+              Trang chủ
+            </Link>
+          </div>
+          <div className="flex justify-center items-center gap-x-1">
+            {/* <CgProfile size={"25px"} /> */}
+            <Link href={"/newsfeed"} className="text-2xl ">
+              Bảng tin
+            </Link>
+          </div>
+          <div className="flex justify-center items-center gap-x-1">
+            {/* <MdOutlineMessage size={"25px"} /> */}
+            <Link href={"/roomlist"} className="text-2xl ">
+              Sự kiện
+            </Link>
+          </div>
+          <div className="flex justify-center items-center gap-x-1">
+            {/* <MdOutlineMessage size={"25px"} /> */}
+            <Link href={"/event"} className="text-2xl ">
+              Ghép đôi
+            </Link>
+          </div>
+          <div className="flex justify-center items-center gap-x-1">
+            {/* <MdOutlineMessage size={"25px"} /> */}
+            <Link href={"/chatss"} className="text-2xl ">
+              Phòng chat
             </Link>
           </div>
           <div className="flex justify-center items-center border-2 py-2 px-12 rounded-full">

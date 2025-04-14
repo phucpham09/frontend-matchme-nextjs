@@ -4,42 +4,41 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentIcon from "@mui/icons-material/Comment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-const posts = [
-  {
-    id: 1,
-    user: "Mai Linh",
-    avatar: "/avatars/mai-linh.jpg",
-    time: "1 giờ trước",
-    content: "Có ai định học cùng lớp Văn học với mình kỳ tới không?",
-    tags: ["hỏi đáp"],
-    likes: 3,
-    comments: 2,
-  },
-  {
-    id: 2,
-    user: "Thanh Tùng",
-    avatar: "/avatars/thanh-tung.jpg",
-    time: "3 giờ trước",
-    content: "Tìm người chơi board game vào cuối tuần",
-    tags: ["tìm bạn"],
-    likes: 1,
-    comments: 1,
-  },
-  {
-    id: 3,
-    user: "Hoàng An",
-    avatar: "/avatars/hoang-an.jpg",
-    time: "6 giờ trước",
-    content: "Cà phê Hàn có ai tí thích không?",
-    tags: ["ẩm thực", "cà phê"],
-    likes: 6,
-    comments: 5,
-  },
-];
-
 export default function NewsfeedPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [newContent, setNewContent] = useState("");
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      user: "Mai Linh",
+      avatar: "/avatars/mai-linh.jpg",
+      time: "1 giờ trước",
+      content: "Có ai định học cùng lớp Văn học với mình kỳ tới không?",
+      tags: ["hỏi đáp"],
+      likes: 3,
+      comments: 2,
+    },
+    {
+      id: 2,
+      user: "Thanh Tùng",
+      avatar: "/avatars/thanh-tung.jpg",
+      time: "3 giờ trước",
+      content: "Tìm người chơi board game vào cuối tuần",
+      tags: ["tìm bạn"],
+      likes: 1,
+      comments: 1,
+    },
+    {
+      id: 3,
+      user: "Hoàng An",
+      avatar: "/avatars/hoang-an.jpg",
+      time: "6 giờ trước",
+      content: "Cà phê Hàn có ai tí thích không?",
+      tags: ["ẩm thực", "cà phê"],
+      likes: 6,
+      comments: 5,
+    },
+  ]);
 
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => {
@@ -48,7 +47,20 @@ export default function NewsfeedPage() {
   };
 
   const handlePost = () => {
-    console.log("New post content:", newContent);
+    setPosts([
+      ...posts,
+      {
+        id: posts.length + 1,
+        user: "Phuc Pham",
+        avatar: "/avatars/hoang-an.jpg",
+        time: "Bây giờ",
+        content: newContent,
+        tags: ["ẩm thực", "cà phê"],
+        likes: 6,
+        comments: 5,
+      },
+    ]);
+    setNewContent("");
     // You could push to `posts` here or send to API
     handleClosePopup();
   };

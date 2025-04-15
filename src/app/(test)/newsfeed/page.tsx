@@ -7,6 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 export default function NewsfeedPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [newContent, setNewContent] = useState("");
+  const [selectedTag, setSelectedTag] = useState("Tất cả");
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -14,7 +15,7 @@ export default function NewsfeedPage() {
       avatar: "/avatars/mai-linh.jpg",
       time: "1 giờ trước",
       content: "Có ai định học cùng lớp Văn học với mình kỳ tới không?",
-      tags: ["hỏi đáp"],
+      tags: ["học tập"],
       likes: 3,
       comments: 2,
     },
@@ -39,7 +40,10 @@ export default function NewsfeedPage() {
       comments: 5,
     },
   ]);
-
+  const allTags = [
+    "Tất cả",
+    ...Array.from(new Set(posts.flatMap((post) => post.tags))),
+  ];
   const handleOpenPopup = () => setIsPopupOpen(true);
   const handleClosePopup = () => {
     setIsPopupOpen(false);
@@ -79,56 +83,75 @@ export default function NewsfeedPage() {
         </div>
 
         {/* Posts */}
-        <div className="space-y-6">
-          {posts.map((post) => (
-            <div
-              key={post.id}
-              className="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition-all duration-300"
+        <div className="flex gap-2 flex-wrap mb-6">
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              onClick={() => setSelectedTag(tag)}
+              className={`px-4 py-1 rounded-full border ${
+                selectedTag === tag
+                  ? "bg-blue-600 text-white border-blue-600"
+                  : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+              } transition`}
             >
-              {/* User Info */}
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
-                  <AccountCircleIcon
-                    fontSize="large"
-                    className="text-gray-500"
-                  />
-                </div>
-                <div>
-                  <p className="font-semibold text-lg text-gray-800">
-                    {post.user}
-                  </p>
-                  <p className="text-sm text-gray-500">{post.time}</p>
-                </div>
-              </div>
-
-              {/* Content */}
-              <p className="text-base text-gray-800 mb-4">{post.content}</p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {post.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-200"
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Reactions */}
-              <div className="flex gap-6 text-sm text-gray-600">
-                <div className="flex items-center gap-2 hover:text-blue-500 cursor-pointer">
-                  <ThumbUpIcon className="w-5 h-5" />
-                  {post.likes}
-                </div>
-                <div className="flex items-center gap-2 hover:text-blue-500 cursor-pointer">
-                  <CommentIcon className="w-5 h-5" />
-                  {post.comments} bình luận
-                </div>
-              </div>
-            </div>
+              #{tag}
+            </button>
           ))}
+        </div>
+        <div className="space-y-6">
+          {posts
+            .filter((post) =>
+              selectedTag === "Tất cả" ? true : post.tags.includes(selectedTag)
+            )
+            .map((post) => (
+              <div
+                key={post.id}
+                className="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition-all duration-300"
+              >
+                {/* User Info */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
+                    <AccountCircleIcon
+                      fontSize="large"
+                      className="text-gray-500"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-lg text-gray-800">
+                      {post.user}
+                    </p>
+                    <p className="text-sm text-gray-500">{post.time}</p>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <p className="text-base text-gray-800 mb-4">{post.content}</p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {post.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-200"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Reactions */}
+                <div className="flex gap-6 text-sm text-gray-600">
+                  <div className="flex items-center gap-2 hover:text-blue-500 cursor-pointer">
+                    <ThumbUpIcon className="w-5 h-5" />
+                    {post.likes}
+                  </div>
+                  <div className="flex items-center gap-2 hover:text-blue-500 cursor-pointer">
+                    <CommentIcon className="w-5 h-5" />
+                    {post.comments} bình luận
+                  </div>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
 

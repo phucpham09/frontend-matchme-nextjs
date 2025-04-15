@@ -6,11 +6,28 @@ import SendIcon from "@mui/icons-material/Send";
 export default function AnonymousFriendChat() {
   const [showChat, setShowChat] = useState(false);
   const [showFriendPrompt, setShowFriendPrompt] = useState(false);
+  const [text, setText] = useState("");
   const [messages, setMessages] = useState([
     { from: "other", text: "Chào cậu!!!!" },
     { from: "me", text: "Hello!!!" },
   ]);
   const [timeLeft, setTimeLeft] = useState(5 * 60); // 5*60 minutes
+
+  useEffect(() => {
+    if (showChat) {
+      const timeout = setTimeout(() => {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            from: "other",
+            text: "Cậu học ngành nào thế?",
+          },
+        ]);
+      }, 3000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [showChat]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -55,7 +72,7 @@ export default function AnonymousFriendChat() {
           <button
             onClick={() => {
               setShowChat(true);
-              setTimeLeft(5*60);
+              setTimeLeft(5 * 60);
             }}
             className="bg-sky-500 text-white px-6 py-3 rounded-full hover:bg-sky-600 transition"
           >
@@ -101,8 +118,23 @@ export default function AnonymousFriendChat() {
                 type="text"
                 placeholder="Nhập tin nhắn..."
                 className="border px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-300"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
               />
-              <button className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow transition">
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow transition"
+                onClick={() => {
+                  if (!text.trim()) return;
+                  setMessages((prevMessages) => [
+                    ...prevMessages,
+                    {
+                      from: "me",
+                      text: text,
+                    },
+                  ]);
+                  setText("");
+                }}
+              >
                 <SendIcon />
               </button>
             </div>

@@ -80,7 +80,7 @@ export default function MessagePage() {
           {/* Header */}
           <div className="flex items-center justify-between mb-6 pb-4 border-b">
             <div>
-              <h2 className="font-bold text-2xl text-gray-800">Aiden Chavez</h2>
+              <h2 className="font-bold text-2xl text-gray-800">Thanh Tùng</h2>
               <p className="text-gray-500 text-sm">
                 Hoạt động lần cuối: 2 giờ trước
               </p>

@@ -12,7 +12,17 @@ export default function AnonymousFriendChat() {
     { from: "me", text: "Hello!!!" },
   ]);
   const [timeLeft, setTimeLeft] = useState(5 * 60); // 5*60 minutes
-
+  const handleSendMessage = () => {
+    if (!text.trim()) return;
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      {
+        from: "me",
+        text: text,
+      },
+    ]);
+    setText("");
+  };
   useEffect(() => {
     if (showChat) {
       const timeout = setTimeout(() => {
@@ -120,20 +130,15 @@ export default function AnonymousFriendChat() {
                 className="border px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-300"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSendMessage();
+                  }
+                }}
               />
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow transition"
-                onClick={() => {
-                  if (!text.trim()) return;
-                  setMessages((prevMessages) => [
-                    ...prevMessages,
-                    {
-                      from: "me",
-                      text: text,
-                    },
-                  ]);
-                  setText("");
-                }}
+                onClick={handleSendMessage}
               >
                 <SendIcon />
               </button>

@@ -42,9 +42,9 @@ export default function MessagePage() {
   };
 
   return (
-    <div className="grid grid-cols-5 bg-gray-100 h-[calc(100vh-6rem)] text-[18px]">
+    <div className="flex sm:grid sm:grid-cols-5 bg-gray-100 h-[calc(100vh-70px)] text-[18px]">
       {/* Sidebar */}
-      <aside className="col-span-1 bg-white p-4 border-r shadow-sm">
+      <aside className="max-sm:hidden sm:col-span-1 bg-white p-4 border-r shadow-sm">
         <input
           type="text"
           placeholder="🔍 Tìm kiếm..."
@@ -139,6 +139,11 @@ export default function MessagePage() {
             placeholder="Nhập tin nhắn..."
             className="flex-1 p-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base"
             onChange={(e) => setNewMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSendMessage();
+              }
+            }}
           />
           <button
             className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow transition"

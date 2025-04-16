@@ -11,13 +11,13 @@ import { MdOutlineMessage } from "react-icons/md";
 const TopNav = () => {
   const [isMenu, setIsMenu] = useState(false);
   return (
-    <div className="flex sm:justify-center sm:items-center p-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="relative flex sm:sticky sm:z-60 sm:top-0 sm:justify-center sm:items-center p-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <IoMenu
         className="sm:hidden text-white w-1/12 place-self-start cursor-pointer"
         size={"40px"}
         onClick={() => setIsMenu(!isMenu)}
       />
-      <div className="flex justify-center items-center max-sm:w-11/12 sm:fixed sm:left-6">
+      <div className="flex sm:absolute sm:left-8 justify-center items-center max-sm:w-11/12 sm:place-self-start">
         <GiThreeFriends size={"40px"} className="text-white" />
         <h1 className="text-white text-2xl font-semibold place-self-end cursor-pointer">
           <Link href={"/dashboard"}>MatchMe</Link>

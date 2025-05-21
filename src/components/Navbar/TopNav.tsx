@@ -39,12 +39,12 @@ const TopNav = () => {
         >
           Bảng tin
         </Link>
-        {/* <Link
-          href={"/roomlist"}
+        <Link
+          href={"/topics"}
           className="text-3xl font-semibold text-white cursor-pointer"
         >
-          Sự kiện
-        </Link> */}
+          Thảo luận
+        </Link>
         <Link
           href={"/event"}
           className="text-3xl font-semibold text-white cursor-pointer"
@@ -151,9 +151,8 @@ const TopNav = () => {
         </div>
       </div> */}
       <div
-        className={`fixed top-0 z-50 left-0 h-full w-2/3 bg-white shadow-lg transition-transform duration-300 ease-in-out ${
-          isMenu ? "translate-x-0" : "-translate-x-full"
-        } sm:hidden`}
+        className={`fixed top-0 z-50 left-0 h-full w-2/3 bg-white shadow-lg transition-transform duration-300 ease-in-out ${isMenu ? "translate-x-0" : "-translate-x-full"
+          } sm:hidden`}
       >
         <IoClose
           className="absolute top-4 right-4"
@@ -184,8 +183,8 @@ const TopNav = () => {
             onClick={() => setIsMenu(!isMenu)}
           >
             {/* <MdOutlineMessage size={"25px"} /> */}
-            <Link href={"/roomlist"} className="text-2xl ">
-              Sự kiện
+            <Link href={"/topics"} className="text-3xl font-semibold text-white cursor-pointer">
+              Thảo luận
             </Link>
           </div>
           <div

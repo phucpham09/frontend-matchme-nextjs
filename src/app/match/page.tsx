@@ -2,7 +2,7 @@ import React from 'react'
 
 const MatchPage = () => {
   return (
-    <div>MatchPage</div>
+    <div>MatchPage</div> 
   )
 }
 

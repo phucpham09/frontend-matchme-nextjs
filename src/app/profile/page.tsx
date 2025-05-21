@@ -21,7 +21,7 @@ const ProfilePage = () => {
           <h2 className="text-xl font-semibold">Nguyễn Văn A</h2>
           <p className="text-gray-500">Sinh viên ngành Công nghệ thông tin</p>
           <p className="text-sm text-gray-400 mb-4">
-            Đại học Bách Khoa, TP.HCM
+            Đại học Bách Khoa, TP.Hà Nội
           </p>
           <div className="flex justify-center gap-2 mb-4">
             <button className="bg-blue-500 text-white px-4 py-1 rounded">

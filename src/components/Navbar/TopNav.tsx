@@ -7,9 +7,12 @@ import { IoClose } from "react-icons/io5";
 import { LuHandshake } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineMessage } from "react-icons/md";
-
+import { FaRegUserCircle } from "react-icons/fa";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import Image from "next/image";
 const TopNav = () => {
   const [isMenu, setIsMenu] = useState(false);
+  const [isDropdown, setIsDropdown] = useState(false);
   return (
     <div className="relative flex sm:sticky sm:z-60 sm:top-0 sm:justify-center sm:items-center p-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <IoMenu
@@ -36,12 +39,12 @@ const TopNav = () => {
         >
           Bảng tin
         </Link>
-        <Link
+        {/* <Link
           href={"/roomlist"}
           className="text-3xl font-semibold text-white cursor-pointer"
         >
           Sự kiện
-        </Link>
+        </Link> */}
         <Link
           href={"/event"}
           className="text-3xl font-semibold text-white cursor-pointer"
@@ -54,6 +57,42 @@ const TopNav = () => {
         >
           Phòng chat
         </Link>
+      </div>
+      <div
+        onClick={() => setIsDropdown(!isDropdown)}
+        className="flex sm:absolute sm:right-8 justify-center items-center max-sm:w-11/12 sm:place-self-start cursor-pointer"
+      >
+        <Image
+          width={40}
+          height={40}
+          src="/images.png" // Đặt avatar này vào public/avatar.png
+          alt="User Avatar"
+          className="rounded-full object-cover"
+        />
+        <MdOutlineKeyboardArrowDown
+          size={"20px"}
+          className="text-white self-end"
+        />
+        {isDropdown && (
+          <div className="absolute sm:top-14 right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 animate-fade-in z-50">
+            <div className="py-1">
+              <Link
+                onClick={() => setIsDropdown(!isDropdown)}
+                href="/profile"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              >
+                Cá nhân
+              </Link>
+              <Link
+                onClick={() => setIsDropdown(!isDropdown)}
+                href="/login"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              >
+                Đăng xuất
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
       {/* <div className="sm:flex justify-center items-center gap-x-4 hidden">
         <Link
